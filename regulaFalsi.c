@@ -15,23 +15,25 @@ int main(){
   double B = 0.0;
   double nextA = iniA;
   double nextB = iniB;
-  double c = 0.0;
+  double w = 0.0;
+  double w1 = 0.0;
 
   do{
     printf("%d回目", k);
     A = nextA;
     B = nextB;
-    c = (A + B) / 2.0;
-    if(func(c) * func(A) <= 0){
+    w = (func(B)*A - func(A) * B) / (func(B) - func(A));
+    if(func(w) * func(A) <= 0){
       nextA = A;
-      nextB = c;
+      nextB = w;
       }else{
-        nextA = c;
+        nextA = w;
         nextB = B;
       }
     k++;
-    printf(":%f\n", c);
-  }while(fabs(nextB - nextA) > EPS);
+    w1 = (func(nextB)*nextA - func(nextA) * nextB) / (func(nextB) - func(nextA));
+    printf(":%f\n", w);
+  }while(fabs(w - w1) > EPS);
 
-  printf("result:%f\n", c);
+  printf("result:%f\n", w);
 }
