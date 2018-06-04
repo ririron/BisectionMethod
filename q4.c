@@ -2,7 +2,7 @@
 #include <math.h>
 
 #define iniX  2.5
-#define EPS 0.0001
+#define EPS 0.00001
 
 double func(double a){
   return 3*atan(a - 1) + (a / 4);
